@@ -1,0 +1,30 @@
+.notfound {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+  gap: 16px;
+}
+
+.notfound-code {
+  font-size: 100px;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.3;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.notfound-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.notfound-desc {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-bottom: 8px;
+}
