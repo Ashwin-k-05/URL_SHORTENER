@@ -3,6 +3,8 @@
 A modern, full-stack URL shortener built with React, Node.js (Express), and MongoDB. Features JWT authentication, click analytics, custom aliases, and a clean dark-themed dashboard.
 
 ---
+##LOOM VIDEO
+https://www.loom.com/share/5c40b1e45dfc4aa896b9fb679dc810b0
 
 ## 📸 Features
 
