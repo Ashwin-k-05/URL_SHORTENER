@@ -105,12 +105,10 @@ Edit `.env`:
 ```env
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/url-shortener
-JWT_SECRET=replace_this_with_a_long_random_secret
+JWT_SECRET=random_secret_key
 BASE_URL=http://localhost:5000
 FRONTEND_URL=http://localhost:3000
 ```
-
-> **Important:** Change `JWT_SECRET` to a long, random string in production.
 
 Install dependencies:
 
