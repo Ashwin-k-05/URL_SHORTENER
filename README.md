@@ -89,7 +89,7 @@ url-shortener/
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Ashwin-k-05/URL_SHORTENER.git
 cd url-shortener
 ```
 
