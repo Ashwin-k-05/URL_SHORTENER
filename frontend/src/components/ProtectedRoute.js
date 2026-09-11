@@ -3,11 +3,9 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, token } = useAuth();
+  const { isAuthenticated } = useAuth();
   const location = useLocation();
 
-  // Check both context state AND localStorage directly
-  // This prevents the timing issue where context hasn't updated yet
   const tokenInStorage = localStorage.getItem('token');
   const userInStorage = localStorage.getItem('user');
 
