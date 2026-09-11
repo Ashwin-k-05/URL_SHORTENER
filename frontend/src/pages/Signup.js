@@ -29,18 +29,24 @@ const Signup = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length) { setErrors(errs); return; }
+  e.preventDefault();
+  const errs = validate();
+  if (Object.keys(errs).length) { 
+    setErrors(errs); 
+    return; 
+  }
 
-    const result = await signup(form);
-    if (result.success) {
-      toast.success('Account created! Welcome aboard 🎉');
+  const result = await signup(form);
+  
+  if (result.success) {
+    toast.success('Account created! Welcome aboard 🎉');
+    setTimeout(() => {
       navigate('/dashboard');
-    } else {
-      toast.error(result.message);
-    }
-  };
+    }, 100);
+  } else {
+    toast.error(result.message);
+  }
+};
 
   return (
     <div className="auth-page">

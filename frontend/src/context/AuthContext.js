@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import React, { createContext, useContext, useState, useCallback } from 'react';
 import * as api from '../utils/api';
 
 const AuthContext = createContext(null);
@@ -12,21 +12,25 @@ export const AuthProvider = ({ children }) => {
       return null;
     }
   });
-  const [token, setToken] = useState(() => localStorage.getItem('token') || null);
+
+  const [token, setToken] = useState(() => {
+    return localStorage.getItem('token') || null;
+  });
+
   const [loading, setLoading] = useState(false);
 
   const persistAuth = (userData, tokenData) => {
-    setUser(userData);
-    setToken(tokenData);
     localStorage.setItem('user', JSON.stringify(userData));
     localStorage.setItem('token', tokenData);
+    setToken(tokenData);
+    setUser(userData);
   };
 
   const clearAuth = () => {
-    setUser(null);
-    setToken(null);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    setToken(null);
+    setUser(null);
   };
 
   const signup = useCallback(async (formData) => {
@@ -36,7 +40,10 @@ export const AuthProvider = ({ children }) => {
       persistAuth(data.user, data.token);
       return { success: true, message: data.message };
     } catch (err) {
-      return { success: false, message: err.response?.data?.message || 'Signup failed.' };
+      return { 
+        success: false, 
+        message: err.response?.data?.message || 'Signup failed.' 
+      };
     } finally {
       setLoading(false);
     }
@@ -49,7 +56,10 @@ export const AuthProvider = ({ children }) => {
       persistAuth(data.user, data.token);
       return { success: true, message: data.message };
     } catch (err) {
-      return { success: false, message: err.response?.data?.message || 'Login failed.' };
+      return { 
+        success: false, 
+        message: err.response?.data?.message || 'Login failed.' 
+      };
     } finally {
       setLoading(false);
     }
@@ -62,7 +72,17 @@ export const AuthProvider = ({ children }) => {
   const isAuthenticated = !!token && !!user;
 
   return (
-    <AuthContext.Provider value={{ user, token, loading, isAuthenticated, signup, login, logout }}>
+    <AuthContext.Provider 
+      value={{ 
+        user, 
+        token, 
+        loading, 
+        isAuthenticated, 
+        signup, 
+        login, 
+        logout 
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

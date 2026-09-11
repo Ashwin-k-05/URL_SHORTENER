@@ -28,18 +28,25 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length) { setErrors(errs); return; }
+  e.preventDefault();
+  const errs = validate();
+  if (Object.keys(errs).length) { 
+    setErrors(errs); 
+    return; 
+  }
 
-    const result = await login(form);
-    if (result.success) {
-      toast.success(result.message || 'Welcome back!');
+  const result = await login(form);
+  
+  if (result.success) {
+    toast.success(result.message || 'Welcome back!');
+    // Small delay to ensure state is fully updated before navigation
+    setTimeout(() => {
       navigate(from, { replace: true });
-    } else {
-      toast.error(result.message);
-    }
-  };
+    }, 100);
+  } else {
+    toast.error(result.message);
+  }
+};
 
   return (
     <div className="auth-page">
