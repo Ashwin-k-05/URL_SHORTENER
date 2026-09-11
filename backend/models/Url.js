@@ -53,8 +53,7 @@ const urlSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Index for fast lookups
-urlSchema.index({ shortCode: 1 });
+
 urlSchema.index({ user: 1, createdAt: -1 });
 
 // Virtual for full short URL
